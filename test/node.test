@@ -1,0 +1,32 @@
+
+var FILE = '/test/foo.yml',
+	FILE_ERRORED_BUILDER = '/test/foo-errored-builder.yml',
+	FILE_ERRORED_PARSER = '/test/foo-errored-parser.yml'
+	;
+	
+UTest({
+	
+	'include': function(done){
+
+		include
+			.load(FILE)
+			.done(function(resp){
+				has_(resp.load.foo.name, 'Foo');
+				done();
+			});
+	},
+	
+	'io.File.read': function(){
+		var content = io.File.read(FILE);
+		has_(content.name, 'Foo');
+	},
+	
+	'builder error': function(){
+		var content = io.File.read(FILE_ERRORED_BUILDER);
+		has_(content, FILE_ERRORED_BUILDER + ':2');
+	},
+	'parser error': function(){
+		var content = io.File.read(FILE_ERRORED_PARSER);
+		has_(content, FILE_ERRORED_PARSER + ':1');
+	}
+});

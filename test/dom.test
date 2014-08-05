@@ -1,0 +1,19 @@
+UTest({
+	
+	'include': function(done){
+		logger.log('load');
+		include
+			.load('/test/foo.yml')
+			.done(function(resp){
+				var json;
+				try {
+					json = JSON.parse(resp.load.foo);
+				}catch(error){}
+				
+				notEq_(json, null);
+				has_(json.name, 'Foo');
+				done();
+			});
+	}
+
+});

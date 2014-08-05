@@ -1,0 +1,18 @@
+{
+    "name": "atma-loader-yml",
+    "version": "1.0.4",
+    "description": "Yaml parser for `atma-io`, `IncludeJS` and `atma-server`.",
+    "author": "Alex Kit (alex.kit@atmajs.com)",
+    "main": "index.js",
+    "license": "MIT",
+    "dependencies": {
+        "yamljs": "~0.1.5"
+    },
+    "devDependencies": {
+        "atma": "latest",
+        "atma-loader": "latest"
+    },
+    "scripts": {
+        "test": "atma test"
+    }
+}
